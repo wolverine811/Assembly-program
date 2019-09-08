@@ -1,0 +1,49 @@
+.data
+.text
+.global main
+main:    			                      
+						
+	mov rg1,0                                    
+	mov rg2,0                                    
+	
+	.loop1                                       
+		add rg1, rg1, 1                              
+		com rg2,1                                    
+		beq loop6
+		mov rg3,0                                    
+		mov rg4,0                                    
+	
+	.loop2       
+		add rg4, rg4, 1                              
+		mul rg5, rg4, rg4                            
+		mul rg5, rg5, rg4                            
+		com rg5, rg1                                  
+		bgt loop5
+		mov rg6, rg4                                 
+	
+	.loop3
+		add rg6, rg6, 1                              
+		mul rg7, rg4, rg4                            
+		mul rg7, rg5, rg4                            
+		com rg7, rg1                                 	
+		bgt loop2
+		add rg8, rg5, rg7                            
+		com rg8, rg1                                 
+		beq loop4
+		jmp loop3
+	
+	.loop4
+		add rg3, rg3, 1                             
+	
+	.loop5
+		com rg3, 2                                  
+		beq loop6                                   
+		jmp.loop1                                      
+	
+	.loop6
+		#print rg1
+		jmp loop7
+	
+	.loop7
+	xor	%eax, %eax	        
+	ret
